@@ -1,0 +1,444 @@
+@baseurl = http://127.0.0.1:8000/api/v1/admin
+
+# @baseurl = https://simplepos.8queensdemo.in/api/v1/admin
+
+# @baseurl = https://phplaravel-958502-3961169.cloudwaysapps.com/api/v1/admin
+
+@token  = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTNlM2RhMDdkYThhMWU3MmNmYzQ5ODI3YmU3MjY1ZDViZWNlM2E2NzkyYjIxNWNmMDhmZmRjMGZiZTI3MWVkMzZiZDUyZjhkNjFlZWExYTEiLCJpYXQiOjE2OTg2NDYyODYuODI0MTM1LCJuYmYiOjE2OTg2NDYyODYuODI0MTM4LCJleHAiOjE3MzAyNjg2ODYuNTQ5MTg4LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.qRNwz_X4VUOtEj6v4p2ACFrKy2bPdZke4Sko59FaO5y5TfnfoIt7PPlsjEMsI-sFQhz9qKPRz_QYHNkzfRtPCvYsrK_yLvfzYs45JAptDzlq7E1NQ2hdIU2hot_S_C4Z6FgfLY2UjmdGHBHliLNkL0opBxq-g7xGzBGmd1CaGznqAoqIdBVOyWCszxP2MfRB6uVaM6W-PKp2X5pTtJpYZjuIhM2pyyMK9z3LATTTgp1RkN5ppeMru0-GFymW2Fg1HhjXoKUHD7XGMQuQ8sjK6H69Lm8D28SMvFbdic4KvZVRm88b71f5TPzX_mtz8OglSO6kK8HI4BCuSzfta2Het85Sg8_BZNN_V0ucRLIbmAPYhZiTm0v5eLkKWReRAc79RbED0WlKMGdhoWuRMC5w2XescWz0xqA6MKfXrYvnon9obOERZEmpGwNUss-JZxH6mHelHNK3BMZEIJIJCRgbASulUJpPKLNDDkuGeSl71llO2VkrRNb8YeJ0omm9avmcgrFfHe74a71EhRKKpTI2RhCPljV9v1-jxT2rqFTza95z-lfygIzsK-63J73DybWwE4GjnTKTEeAQ_yFn0IabICUjjLkYLYDeHh800fh7Yf0F0G62aTeLJ2nI8VM0EdYkc7OWFPsr4NCc-35zgJAEH4oCj9FcjW-o-eoku38w5Yc
+
+@phone = "1234567890"
+@loginsessionid = "47ea8f23-40ce-4255-a8bb-01f66a2e6b16"
+
+@password = "12345678"
+
+### 1) admin password login
+
+POST {{baseurl}}/adminpasswordlogin
+content-type: application/json
+Accept: Application/json
+
+{
+    "phone" : {{phone}},
+    "password" :  {{password}}
+}
+
+### 2) admin logout
+
+GET {{baseurl}}/adminlogout
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 3) admin support
+POST {{baseurl}}/adminsupport
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "type" : 2,
+    "panel" : 1
+}
+
+### 4) GET ADMIN PROFILE
+
+GET {{baseurl}}/admingetprofile
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 5) ADMIN CHANGE PASSWORD
+
+POST {{baseurl}}/adminchangepassword
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "current_password": 123456780,
+    "password": 12345678,
+    "password_confirmation": 12345678
+}
+
+### 6) admin Faq
+
+POST {{baseurl}}/adminfaq
+content-type: application/json
+Accept: Application/jsonj
+Authorization: Bearer {{token}}
+
+{
+    "panel" : 2
+}
+
+### 7) admin Fcm
+
+POST {{baseurl}}/adminsavedeviceinfo
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_token": "sdfdfd",
+    "device_model": "two",
+    "device_brand": "two",
+    "device_manufacturer": "two"
+}
+
+### 8) NOTIFICATION
+
+GET {{baseurl}}/adminnotification
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 9) CUSTOMER
+
+POST {{baseurl}}/adminsearchcustomer
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": ""
+}
+
+
+### 10) PRODUCT CATEGORY
+
+POST {{baseurl}}/adminsearchproductcategory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": ""
+}
+
+### 11) PRODUCT
+
+POST {{baseurl}}/adminsearchproduct
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "",
+    "productcategory_uuid": ""
+}
+
+### 12) OVERALL PRODUCT SEARCH
+
+POST {{baseurl}}/adminoverallproductsearch
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "productcategory_uuid":"b57022a9-e6ae-4493-83c2-a830948baf66",
+    "search": ""
+}
+
+### 14) INDIVIDUAL HISTORY
+
+POST {{baseurl}}/individualhistory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": ""
+}
+
+### 16) OVERALL HISTORY
+
+POST {{baseurl}}/adminoverallorderhistory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": ""
+}
+
+### 16) OVERALL HISTORY
+
+POST {{baseurl}}/showorderbyuuid
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid": "9bd496e6-b5c3-4c12-8f9b-a8705fd9ac35"
+}
+
+### 16) OVERALL HISTORY
+
+POST {{baseurl}}/adminplaceorder
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "salesdetails": {
+                        "sales_uuid" : "",
+                        "customer_uuid" : "",
+                        "customer_name" : "Sabari Raj",
+                        "customer_phone" : "8056845114",
+                        "sub_total" : "340",
+                        "discount" : "",
+                        "extra_charges" : "2.50",
+                        "received_amount" : "340",
+                        "remaining_amount" : "0",
+                        "total":"342.50",
+                        "roundoff":"0.50",
+                        "grandtotal":"343",
+                        "mode":1,
+                        "source_type" : 2,
+                        "salesitem": 
+                        [
+                            {
+                                "saleitem_uuid":"",
+                                "product_uuid": "117eaee7-7364-41f1-ae6c-3be92ee371a1",
+                                "price":"100",
+                                "quantity":1,
+                                "total":100
+                            },
+                            {
+                                "saleitem_uuid":"",
+                                "product_uuid": "dd5833d3-1619-4a09-9ea2-64c522385667",
+                                "price":"240",
+                                "quantity":1,
+                                "total":240
+                            }
+                        ]
+                    }
+}
+
+### 16) OVERALL HISTORY
+
+GET {{baseurl}}/admindashboard
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 16) OVERALL HISTORY
+
+GET {{baseurl}}/adminpossetting
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 16) OVERALL HISTORY
+
+POST {{baseurl}}/admingetcustomerorder
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid": "1c2c58dc-45d1-41c7-a679-d8b7150c0b52"
+}
+
+### 16) OVERALL HISTORY
+
+GET {{baseurl}}/admingetuomlist
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 16) CREATE CUSTOMER
+
+POST {{baseurl}}/admincreatecustomer
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "47968e5e-e724-474b-ab1e-938b6a3025ad",
+    "name" : "Sabari Raj",
+    "phone" : "8056851112",
+    "email" : "test1@gmail.com",
+    "active" : 1,
+    "note" : ""
+}
+
+### 16) CREATE PRODUCT
+
+POST {{baseurl}}/admincreateproduct
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "",
+    "name" : "test",
+    "productcategory_uuid" : "10930630-8f3b-42df-8ab1-460014617ce9",
+    "purchaseprice" : "10",
+    "sellingprice" : "15",
+    "sku" : "SKU-03",
+    "image" : "",
+    "uom_uuid" : "d9141577-4ecc-4648-8e9d-79555a3a51e5",
+    "note" : "",
+    "active" : 1,
+    "cgst" : 0,
+    "sgst" : 0,
+    "igst" : 0,
+    "cess" : 0,
+    "hsncode" : "201",
+    "is_nonveg" : 1
+}
+
+### 16) CREATE OR EDIT SUPPLIER
+
+POST {{baseurl}}/admincreateoreditsupplier
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "",
+    "name" : "test",
+    "phone" : "1234561234",
+    "email" : "test@gmail.com",
+    "gst" : "123456123412341",
+    "pan" : "2324324322",
+    "cpname" : "test1",
+    "cpphone" : "1234512345",
+    "cpmail" : "testcp@gmail.com",
+    "address" : "test address",
+    "note" : "",
+    "active" : 1
+}
+
+### 16) SUPPLIER LIST
+
+POST {{baseurl}}/adminsupplierlist
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search" : ""
+}
+
+### 16) SHOW SUPPLIER
+
+POST {{baseurl}}/adminshowsupplier
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "0ec493e8-c8e0-4b4e-8696-d505bd355c70"
+}
+
+### 16) SUPPLIER LIST
+
+GET {{baseurl}}/admingetexpensecategorylist
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 16) CREATE OR EDIT EXPENSE
+
+POST {{baseurl}}/admincreateoreditexpense
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "",
+    "name" : "test",
+    "date" : "27-10-2023",
+    "expensecategory_uuid" : "00ade606-d611-4397-8d36-ced60e690da9",
+    "amount" : "100",
+    "note" : "",
+    "active" : 1
+}
+
+### 16) EXPENSE LIST
+
+POST {{baseurl}}/adminexpenselist
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search" : ""
+}
+
+### 16) SHOW EXPENSE
+
+POST {{baseurl}}/adminshowexpense
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "4a741f91-1aa7-4df4-af37-a1833e7fe3c7"
+}
+
+### 16) CREATE OR EDIT EXPENSE
+
+POST {{baseurl}}/admincreateoreditpurchase
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "salesdetails": {
+                        "purchase_uuid" : "",
+                        "supplier_uuid" : "",
+                        "purchase_date" : "",
+                        "sub_total" : "",
+                        "freight_charges" : "",
+                        "adjustment" : "",
+                        "discount" : "",
+                        "total" : "",
+                        "roundoff" : "",
+                        "grandtotal" : "",
+                        "note" : "",
+                        "source_type" : "",
+                        "salesitem": 
+                        [
+                            {
+                                "saleitem_uuid":"",
+                                "product_uuid": "117eaee7-7364-41f1-ae6c-3be92ee371a1",
+                                "price":"100",
+                                "quantity":1,
+                                "total":100
+                            },
+                            {
+                                "saleitem_uuid":"",
+                                "product_uuid": "dd5833d3-1619-4a09-9ea2-64c522385667",
+                                "price":"240",
+                                "quantity":1,
+                                "total":240
+                            }
+                        ]
+                    }
+}
+
+### 16) EXPENSE LIST
+
+POST {{baseurl}}/adminpurchaselist
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search" : ""
+}
+
+### 16) SHOW EXPENSE
+
+POST {{baseurl}}/adminshowpurchase
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "uuid" : "b81a7c6a-134f-46e7-a3c9-119461f30c79"
+}
